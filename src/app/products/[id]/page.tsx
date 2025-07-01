@@ -6,10 +6,56 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Badge } from '@/components/ui/badge';
 import AddToCartButton from '@/components/AddToCartButton';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
-
+import type { Metadata } from 'next';
 interface ProductPageProps {
   params: {
     id: string;
+  };
+}
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const product = await getProductAction(params.id);
+
+  if (!product) {
+    return {
+      title: 'Product Not Found | Lapzen',
+      description: 'This product could not be found in our catalog.',
+    };
+  }
+
+  return {
+    title: `${product.name} – ${product.brand} | Lapzen`,
+    description: product.description || `Buy ${product.name} from Lapzen at the best price in Pakistan.`,
+    keywords: [
+      product.name,
+      product.brand,
+      'Lapzen',
+      'premium laptops',
+      'buy laptops',
+      product.specs.processor,
+      product.specs.ram,
+      product.specs.storage,
+    ],
+    openGraph: {
+      title: `${product.name} – ${product.brand} | Lapzen`,
+      description: product.description,
+      url: `https://lapzen.netlify.app/products/${params.id}`,
+      siteName: 'Lapzen',
+      type: 'product',
+      images: product.images?.length
+        ? product.images.map((url) => ({
+            url,
+            width: 800,
+            height: 600,
+            alt: `${product.name} image`,
+          }))
+        : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} – ${product.brand} | Lapzen`,
+      description: product.description,
+      images: product.images?.length ? product.images : [],
+    },
   };
 }
 
