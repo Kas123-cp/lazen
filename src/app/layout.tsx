@@ -21,9 +21,42 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Lapzen - Premium Laptops in Pakistan',
+  title: {
+    default: 'Lapzen – Premium Laptops in Pakistan',
+    template: '%s | Lapzen',
+  },
   description: 'Your one-stop shop for new, used, and refurbished premium laptops from top brands like Apple, Dell, HP, and more.',
+  keywords: [
+    'Lapzen',
+    'premium laptops',
+    'buy laptops in Pakistan',
+    'used laptops',
+    'refurbished laptops',
+    'Next.js ecommerce',
+    'Netlify store',
+    'Apple laptops',
+    'Dell laptops',
+    'HP laptops',
+  ],
+  authors: [{ name: 'Lapzen Team' }],
+  creator: 'Lapzen',
+  metadataBase: new URL('https://lapzen.netlify.app'),
+  openGraph: {
+    title: 'Lapzen – Premium Laptops in Pakistan',
+    description: 'Browse top-quality laptops from brands like Apple, Dell, HP. New and refurbished models available at unbeatable prices.',
+    url: 'https://lapzen.netlify.app',
+    siteName: 'Lapzen',
+    type: 'website',
+    locale: 'en_PK',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Lapzen – Premium Laptops in Pakistan',
+    description: 'Discover the best laptops in Pakistan with Lapzen. Fast. Reliable. Affordable.',
+    creator: '@yourTwitterHandle', // replace with your brand’s Twitter handle or remove if not used
+  },
 };
+
 
 export default function RootLayout({
   children,
