@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       description: product.description,
       url: `https://lapzen.netlify.app/products/${params.id}`,
       siteName: 'Lapzen',
-      type: 'product',
+      type: 'website',
       images: product.images?.length
         ? product.images.map((url) => ({
             url,
