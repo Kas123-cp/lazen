@@ -3,13 +3,27 @@ import { Button } from '@/components/ui/button';
 import { getProductsAction } from '@/app/admin/actions';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Head from 'next/head';
 
 export default async function Home() {
   const products = await getProductsAction();
   const featuredProducts = products.filter(p => p.featured).slice(0, 3);
   const newArrivals = products.filter(p => p.newArrival).slice(0, 3);
 
-  return (
+return (
+    <>
+      <Head>
+        <title>Used HP & Dell Laptops in Campbellfield | Lapzen</title>
+        <meta
+          name="description"
+          content="Buy used HP and Dell laptops in Campbellfield and across Australia. Affordable second-hand laptops with quality assurance from Lapzen."
+        />
+        <meta
+          name="keywords"
+          content="used HP laptops, used Dell laptops, second-hand laptops, buy used laptops, refurbished laptops, laptops in Campbellfield"
+        />
+        <meta name="robots" content="index, follow" />
+      </Head>
     <div className="space-y-16 md:space-y-24 pb-24">
       {/* Hero Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">
