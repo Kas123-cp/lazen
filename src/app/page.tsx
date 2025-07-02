@@ -16,11 +16,11 @@ return (
         <title>Used HP & Dell Laptops in Campbellfield | Lapzen</title>
         <meta
           name="description"
-          content="Buy used HP and Dell laptops in Campbellfield and across Australia. Affordable second-hand laptops with quality assurance from Lapzen."
+          content="Buy used HP and Dell laptops in Lahore and across Pakistan. Affordable second-hand laptops with quality assurance from Lapzen."
         />
         <meta
           name="keywords"
-          content="used HP laptops, used Dell laptops, second-hand laptops, buy used laptops, refurbished laptops, laptops in Campbellfield"
+          content="used HP laptops, used Dell laptops, second-hand laptops, buy used laptops, refurbished laptops, laptops in Lahore"
         />
         <meta name="robots" content="index, follow" />
       </Head>
@@ -98,5 +98,6 @@ return (
         </section>
       )}
     </div>
+   </>
   );
 }
