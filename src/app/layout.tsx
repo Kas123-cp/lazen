@@ -66,7 +66,8 @@ export const metadata: Metadata = {
     locale: 'en_PK',
   },
   other:{
-    'google-adsense-account':'ca-pub-5691028422781835'
+    'google-adsense-account':'ca-pub-5691028422781835',
+  },
   twitter: {
     card: 'summary_large_image',
     title: 'Lapzen – Premium Laptops in Pakistan',
