@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CartProvider';
 import { Toaster } from '@/components/ui/toaster';
-
+import Script from 'next/script';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -77,6 +77,8 @@ export const metadata: Metadata = {
 };
 
 
+import Script from 'next/script'; // ✅ Import Script
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -84,16 +86,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* ✅ Google AdSense loader script */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5691028422781835"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className={cn("min-h-screen bg-background font-body antialiased", poppins.variable, ptSans.variable)}>
         <CartProvider>
-            <div className="relative flex min-h-dvh flex-col bg-background">
-                <Header />
-                <main className="flex-1 pt-20">{children}</main>
-                <Footer />
-            </div>
-            <Toaster />
+          <div className="relative flex min-h-dvh flex-col bg-background">
+            <Header />
+            <main className="flex-1 pt-20">{children}</main>
+            <Footer />
+          </div>
+          <Toaster />
         </CartProvider>
       </body>
     </html>
   );
+}
+
 }
