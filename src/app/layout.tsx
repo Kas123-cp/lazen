@@ -79,23 +79,18 @@ export const metadata: Metadata = {
 
 
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* ✅ Google AdSense loader script */}
+      <body className={cn("min-h-screen bg-background font-body antialiased", poppins.variable, ptSans.variable)}>
+        {/* ✅ Move AdSense script here */}
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5691028422781835"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-      </head>
-      <body className={cn("min-h-screen bg-background font-body antialiased", poppins.variable, ptSans.variable)}>
+
         <CartProvider>
           <div className="relative flex min-h-dvh flex-col bg-background">
             <Header />
@@ -108,5 +103,4 @@ export default function RootLayout({
     </html>
   );
 }
-
 
