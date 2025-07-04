@@ -87,13 +87,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ✅ Use a raw script tag — not next/script — to avoid data-nscript */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5691028422781835"
-          crossOrigin="anonymous"
-          strategy = "afterInteractive"
-        ></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5691028422781835"
+          crossorigin="anonymous"></script>
+        <!-- Test -->
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-5691028422781835"
+          data-ad-slot="1173025954"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </head>
       <body className={cn("min-h-screen bg-background font-body antialiased", poppins.variable, ptSans.variable)}>
         <CartProvider>
