@@ -7,6 +7,8 @@ import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CartProvider';
 import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
+import Head from 'next/head';
+
 
 const poppins = Poppins({
   subsets: ['latin'],
