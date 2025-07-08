@@ -54,9 +54,6 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 border-t pt-8 text-center text-muted-foreground font-body">
-          <p>&copy; {new Date().getFullYear()} Lapzen. All rights reserved.</p>
-        </div>
       </div>
     </footer>
   );
