@@ -1,28 +1,44 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import * as SliderPrimitive from "@radix-ui/react-slider"
+import {
+  Sheet,
+  SheetContent,
+  SheetClose,
+} from './sheet';
 
-import { cn } from "@/lib/utils"
+interface NavLink {
+  href: string;
+  label: string;
+}
 
-const Slider = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <SliderPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative flex w-full touch-none select-none items-center",
-      className
-    )}
-    {...props}
-  >
-    <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary">
-      <SliderPrimitive.Range className="absolute h-full bg-primary" />
-    </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" />
-  </SliderPrimitive.Root>
-))
-Slider.displayName = SliderPrimitive.Root.displayName
+interface SliderProps {
+  navLinks: NavLink[];
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
 
-export { Slider }
+export default function Slider({ navLinks, open, onOpenChange }: SliderProps) {
+  return (
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent side="left" className="w-64 bg-white p-4">
+        <SheetClose asChild>
+          <button className="mb-4 text-xl" aria-label="Close menu">✖</button>
+        </SheetClose>
+
+        <ul className="space-y-4">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                onClick={() => onOpenChange(false)} // close slider when link clicked
+                className="text-lg"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </SheetContent>
+    </Sheet>
+  );
+}
