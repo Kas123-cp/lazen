@@ -10,7 +10,7 @@ export default async function Home() {
   const featuredProducts = products.filter(p => p.featured).slice(0, 3);
   const newArrivals = products.filter(p => p.newArrival).slice(0, 3);
 
-return (
+  return (
     <>
       <Head>
         <title>Used HP & Dell Laptops in Campbellfield | Lapzen</title>
@@ -24,80 +24,88 @@ return (
         />
         <meta name="robots" content="index, follow" />
       </Head>
-    <div className="space-y-16 md:space-y-24 pb-24">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-        <div className="text-center py-16 md:py-24">
+
+      <div className="space-y-16 md:space-y-24 pb-24">
+        {/* Hero Section */}
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+          <div className="text-center py-16 md:py-24">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-headline tracking-tight">
               Find Your <span className="text-primary">Perfect</span> Laptop
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
               Looking for affordable and reliable laptops? Lapzen offers a wide range of second-hand HP and Dell laptops for students, professionals, and small businesses.
               Discover top-tier new and pre-loved laptops from the world's leading brands. Unmatched quality, unbeatable prices.
-                                                         Why choose us?
-              We offer a wide range of used and new laptops all across pakistan at reasonable prices so every young talent can 
-                                        achieve new grounds by using laptops we offer proudly.
+              Why choose us?
+              We offer a wide range of used and new laptops all across pakistan at reasonable prices so every young talent can
+              achieve new grounds by using laptops we offer proudly.
               Lapzen stocks high-quality used Dell laptops including Latitude and Inspiron models, ideal for business needs.
               HP laptops are known for durability and performance. Our used HP laptops are tested, affordable, and ready for daily use.
             </p>
             <div className="flex gap-4 justify-center mt-8">
               <Button asChild size="lg" className="font-bold">
-                <Link href="/products">Shop All Laptops <ArrowRight className="ml-2 h-5 w-5" /></Link>
+                <Link href="/products">
+                  Shop All Laptops <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="/about">About Us</Link>
               </Button>
             </div>
-        </div>
-      </section>
-
-      {/* Featured Products Section */}
-      {featuredProducts.length > 0 && (
-        <section className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">Featured Laptops</h2>
-            <p className="text-lg text-muted-foreground mt-2">Handpicked for performance and value</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
           </div>
         </section>
-      )}
-      
-      {/* New Arrivals Section */}
-      {newArrivals.length > 0 && (
-         <section className="bg-card py-16 md:py-24">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Featured Products Section */}
+        {featuredProducts.length > 0 && (
+          <section className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">New Arrivals</h2>
-                <p className="text-lg text-muted-foreground mt-2">Check out the latest additions to our collection</p>
+              <h2 className="text-3xl md:text-4xl font-bold font-headline">Featured Laptops</h2>
+              <p className="text-lg text-muted-foreground mt-2">Handpicked for performance and value</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {newArrivals.map(product => (
+              {featuredProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
-                ))}
+              ))}
             </div>
-            </div>
-         </section>
-      )}
+          </section>
+        )}
 
-      {/* All Products Section */}
-      {products.length > 0 && (
-        <section className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">All Our Laptops</h2>
-            <p className="text-lg text-muted-foreground mt-2">Browse the complete collection</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </section>
-      )}
-    </div>
-   </>
+        {/* New Arrivals Section */}
+        {newArrivals.length > 0 && (
+          <section className="bg-card py-16 md:py-24">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">New Arrivals</h2>
+                <p className="text-lg text-muted-foreground mt-2">Check out the latest additions to our collection</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {newArrivals.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* All Products Section */}
+        {products.length > 0 && (
+          <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold font-headline">All Our Laptops</h2>
+              <p className="text-lg text-muted-foreground mt-2">Browse the complete collection</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {products.slice(0, 3).map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+            <div className="flex justify-center mt-8">
+              <Button asChild size="lg" className="font-bold">
+                <Link href="/products">Show All Products</Link>
+              </Button>
+            </div>
+          </section>
+        )}
+      </div>
+    </>
   );
 }
