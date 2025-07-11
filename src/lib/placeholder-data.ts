@@ -4,16 +4,22 @@ import { FieldValue } from 'firebase-admin/firestore';
 
 const LaptopsCollection = 'Laptops';
 
-export async function getProducts(): Promise<Product[]> {
+export async function getProducts(limit = 20): Promise<Product[]> {
     if (!firestore) {
         console.error('Firestore is not initialized. Cannot get products.');
         return [];
     }
     try {
-        const snapshot = await firestore.collection(LaptopsCollection).orderBy('createdAt', 'desc').get();
+        const snapshot = await firestore
+            .collection(LaptopsCollection)
+            .orderBy('createdAt', 'desc')
+            .limit(limit)
+            .get();
+
         if (snapshot.empty) {
             return [];
         }
+
         return snapshot.docs.map(doc => {
             const data = doc.data();
             return {
@@ -32,10 +38,10 @@ export async function getProducts(): Promise<Product[]> {
         });
     } catch (error) {
         console.error("Error fetching products from Firestore:", error);
-        // This can happen if the collection doesn't exist yet.
         return [];
     }
 }
+
 
 export async function getProduct(id: string): Promise<Product | null> {
     if (!firestore) {
