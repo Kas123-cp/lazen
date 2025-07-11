@@ -33,13 +33,8 @@ export default async function Home() {
               Find Your <span className="text-primary">Perfect</span> Laptop
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
-              Looking for affordable and reliable laptops? Lapzen offers a wide range of second-hand HP and Dell laptops for students, professionals, and small businesses.
-              Discover top-tier new and pre-loved laptops from the world's leading brands. Unmatched quality, unbeatable prices.
-              Why choose us?
-              We offer a wide range of used and new laptops all across pakistan at reasonable prices so every young talent can
-              achieve new grounds by using laptops we offer proudly.
-              Lapzen stocks high-quality used Dell laptops including Latitude and Inspiron models, ideal for business needs.
-              HP laptops are known for durability and performance. Our used HP laptops are tested, affordable, and ready for daily use.
+               Discover top-tier new and pre-loved laptops from the world's leading brands. Unmatched quality, unbeatable prices!
+                                    Choose Us as Your Trusted Brand!
             </p>
             <div className="flex gap-4 justify-center mt-8">
               <Button asChild size="lg" className="font-bold">
