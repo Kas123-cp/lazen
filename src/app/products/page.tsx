@@ -5,8 +5,7 @@ import { getProductsAction } from '@/app/admin/actions';
 import ProductGrid from '@/components/ProductGrid';
 
 export default async function ProductsPage() {
-  // Fetch only first 20 products initially
-  const products = await getProductsAction({limit :20}); // You need to modify getProductsAction to accept limit
+  const products = await getProductsAction({ limit: 15 });
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -19,10 +18,7 @@ export default async function ProductsPage() {
         </p>
       </div>
 
-      {/* Render product grid */}
       <ProductGrid initialProducts={products} />
-
-      {/* Optional: Load more button, if implemented in ProductGrid */}
     </div>
   );
 }
