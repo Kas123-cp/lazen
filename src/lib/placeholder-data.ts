@@ -4,17 +4,24 @@ import { FieldValue } from 'firebase-admin/firestore';
 
 const LaptopsCollection = 'Laptops';
 
-export async function getProducts(limit = 20): Promise<Product[]> {
+export async function getProducts(limit = 15, startAfterCreatedAt?: string): Promise<Product[]> {
     if (!firestore) {
         console.error('Firestore is not initialized. Cannot get products.');
         return [];
     }
+
     try {
-        const snapshot = await firestore
+        let queryRef = firestore
             .collection(LaptopsCollection)
             .orderBy('createdAt', 'desc')
-            .limit(limit)
-            .get();
+            .limit(limit);
+
+        if (startAfterCreatedAt) {
+            const startDate = new Date(startAfterCreatedAt);
+            queryRef = queryRef.startAfter(startDate);
+        }
+
+        const snapshot = await queryRef.get();
 
         if (snapshot.empty) {
             return [];
@@ -42,18 +49,19 @@ export async function getProducts(limit = 20): Promise<Product[]> {
     }
 }
 
-
 export async function getProduct(id: string): Promise<Product | null> {
     if (!firestore) {
         console.error('Firestore is not initialized. Cannot get product.');
         return null;
     }
+
     try {
         const docRef = firestore.collection(LaptopsCollection).doc(id);
         const doc = await docRef.get();
         if (!doc.exists) {
             return null;
         }
+
         const data = doc.data();
         if (!data) return null;
 
@@ -77,11 +85,11 @@ export async function getProduct(id: string): Promise<Product | null> {
 }
 
 export async function addProduct(productData: Omit<Product, 'id' | 'createdAt'>): Promise<Product> {
-     if (!firestore) {
+    if (!firestore) {
         console.error('Firestore is not initialized. Cannot add product.');
         throw new Error('Database connection is not available.');
     }
-    
+
     try {
         const newProductData = {
             ...productData,
@@ -92,12 +100,12 @@ export async function addProduct(productData: Omit<Product, 'id' | 'createdAt'>)
         };
 
         const docRef = await firestore.collection(LaptopsCollection).add(newProductData);
-        
+
         return {
             id: docRef.id,
             ...productData,
             price: Number(productData.price),
-            createdAt: new Date().toISOString(), // Return an estimated time for client-side use
+            createdAt: new Date().toISOString(),
         };
     } catch (error) {
         console.error('Error adding product to Firestore:', error);
