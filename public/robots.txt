@@ -1,6 +1,7 @@
 User-agent: Googlebot
-
+Allow: /
 
 User-agent: *
 Allow: /
+
 Sitemap: https://lapzen.netlify.app/sitemap.xml
