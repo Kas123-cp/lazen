@@ -13,7 +13,7 @@ export default async function Home() {
   return (
     <>
       <Head>
-        <title>Used HP & Dell Laptops in Campbellfield | Lapzen</title>
+        <title>Used HP & Dell Laptops in Lahore | Lapzen</title>
         <meta
           name="description"
           content="Buy used HP and Dell laptops in Lahore and across Pakistan. Affordable second-hand laptops with quality assurance from Lapzen."
