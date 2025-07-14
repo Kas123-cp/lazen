@@ -55,6 +55,12 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       product.specs.processor,
       product.specs.ram,
       product.specs.storage,
+      'used laptops',
+      'used laptops in pakistan',
+      'used laptops in lahore',
+      'used laptops in hafeez centre',
+      'old laptops',
+      'used laptops in good condition',
     ],
     openGraph: {
       title: `${product.name} – ${product.brand} | Lapzen`,
