@@ -25,6 +25,24 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     };
   }
 
+  const fallbackImage = 'https://lapzen.netlify.app/logo.png';
+
+  const imageList = product.images?.length
+    ? product.images.map((url) => ({
+        url,
+        width: 800,
+        height: 600,
+        alt: `${product.name} image`,
+      }))
+    : [
+        {
+          url: fallbackImage,
+          width: 800,
+          height: 600,
+          alt: 'Lapzen Logo',
+        },
+      ];
+
   return {
     title: `${product.name} – ${product.brand} | Lapzen`,
     description: product.description || `Buy ${product.name} from Lapzen at the best price in Pakistan.`,
@@ -44,20 +62,13 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       url: `https://lapzen.netlify.app/products/${params.id}`,
       siteName: 'Lapzen',
       type: 'website',
-      images: product.images?.length
-        ? product.images.map((url) => ({
-            url,
-            width: 800,
-            height: 600,
-            alt: `${product.name} image`,
-          }))
-        : [],
+      images: imageList,
     },
     twitter: {
       card: 'summary_large_image',
       title: `${product.name} – ${product.brand} | Lapzen`,
       description: product.description,
-      images: product.images?.length ? product.images : [],
+      images: product.images?.length ? product.images : [fallbackImage],
     },
   };
 }
@@ -76,9 +87,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
+  const fallbackImage = 'https://lapzen.netlify.app/logo.png';
   const displayImages = product.images && product.images.length > 0
     ? product.images
-    : ['https://placehold.co/600x600.png'];
+    : [fallbackImage];
 
   return (
     <>
