@@ -5,7 +5,7 @@ import { FieldValue } from 'firebase-admin/firestore';
 const LaptopsCollection = 'Laptops';
 
 export async function getProducts(
-  limit = 15,
+  limit = 30,
   startAfterCreatedAt?: string
 ): Promise<Product[]> {
   if (!firestore) {
