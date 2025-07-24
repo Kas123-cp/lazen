@@ -9,7 +9,7 @@ type GetProductsParams = {
 };
 
 export async function getProductsAction({
-  limit = 15,
+  limit = 30,
   startAfterCreatedAt,
 }: GetProductsParams = {}): Promise<Product[]> {
   return await getProducts(limit, startAfterCreatedAt);
