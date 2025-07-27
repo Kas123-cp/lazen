@@ -5,7 +5,7 @@ import { getProductsAction } from '@/app/admin/actions';
 import ProductGrid from '@/components/ProductGrid';
 
 export default async function ProductsPage() {
-  const products = await getProductsAction({ limit: 30 });
+  const products = await getProductsAction({ limit: 10 });
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
