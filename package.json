@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "export": "next export"
+    "export": "next export",
+    "postbuild":"next-sitemap"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
