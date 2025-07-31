@@ -20,7 +20,7 @@ export default async function Home() {
         />
         <meta
           name="keywords"
-          content="used HP laptops, used Dell laptops, second-hand laptops, buy used laptops, refurbished laptops, laptops in Lahore"
+          content="used HP laptops, used Dell laptops, second-hand laptops, buy used laptops, refurbished laptops, laptops in Lahore,Lapzen,premium laptops,buy laptops in Pakistan,used laptops,laptops in lahore,Apple laptops,Dell laptops,HP laptops,Lenovo laptops,Best laptops,cheap laptops,good condition laptops,hafeez centre lahore,hafeez centre laptops,hafeez centre used laptops,best laptops in lahore,best used laptops in lahore,lenovo used laptops,dell used laptops,good condition hp laptops,good condition dell laptops,good condition lenovo laptops,hp used laptops,best cheap laptops in lahore,lapzen laptops,lapzen used laptops"
         />
         <meta name="robots" content="index, follow" />
       </Head>
