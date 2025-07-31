@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
 import { Poppins, PT_Sans } from 'next/font/google';
 import { cn } from '@/lib/utils';
@@ -6,9 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CartProvider';
 import { Toaster } from '@/components/ui/toaster';
-import Script from 'next/script';
 import Head from 'next/head';
-
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -27,7 +25,8 @@ export const metadata: Metadata = {
     default: 'Lapzen – Premium Laptops in Pakistan',
     template: '%s | Lapzen',
   },
-  description: 'Your one-stop shop for new, used, and refurbished premium laptops from top brands like Apple, Dell, HP, and more.',
+  description:
+    'Your one-stop shop for new, used, and refurbished premium laptops from top brands like Apple, Dell, HP, and more.',
   keywords: [
     'Lapzen',
     'premium laptops',
@@ -58,28 +57,27 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Lapzen Team' }],
   creator: 'Lapzen',
-  metadataBase: new URL('https://lapzen.netlify.app'),
+  metadataBase: new URL('https://lapzen.store'), // ✅ Updated
   openGraph: {
     title: 'Lapzen – Premium Laptops in Pakistan',
-    description: 'Browse top-quality laptops from brands like Apple, Dell, HP. New and refurbished models available at unbeatable prices.',
-    url: 'https://lapzen.netlify.app',
+    description:
+      'Browse top-quality laptops from brands like Apple, Dell, HP. New and refurbished models available at unbeatable prices.',
+    url: 'https://lapzen.store',
     siteName: 'Lapzen',
     type: 'website',
     locale: 'en_PK',
   },
-  other:{
-    'google-adsense-account':'ca-pub-5691028422781835',
+  other: {
+    'google-adsense-account': 'ca-pub-5691028422781835',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Lapzen – Premium Laptops in Pakistan',
-    description: 'Discover the best laptops in Pakistan with Lapzen. Fast. Reliable. Affordable.',
-    creator: '@yourTwitterHandle', // replace with your brand’s Twitter handle or remove if not used
+    description:
+      'Discover the best laptops in Pakistan with Lapzen. Fast. Reliable. Affordable.',
+    creator: '@yourTwitterHandle', // Replace or remove if not needed
   },
 };
-
-
-
 
 export default function RootLayout({
   children,
@@ -89,16 +87,35 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-        {/* ✅ Load AdSense Script */}
+        {/* ✅ AdSense Script */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5691028422781835"
           crossOrigin="anonymous"
         ></script>
+
+        {/* ✅ Favicon & SEO Logo */}
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="shortcut icon" href="/logo.png" type="image/png" />
+
+        {/* ✅ Structured Data for Google Logo */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Lapzen",
+              url: "https://lapzen.store",
+              logo: "https://lapzen.store/logo.png",
+            }),
+          }}
+        />
       </Head>
       <body
         className={cn(
-          "min-h-screen bg-background font-body antialiased",
+          'min-h-screen bg-background font-body antialiased',
           poppins.variable,
           ptSans.variable
         )}
@@ -107,11 +124,11 @@ export default function RootLayout({
           <div className="relative flex min-h-dvh flex-col bg-background">
             <Header />
 
-            {/* ✅ Show Ad just below header or above footer */}
-            <div style={{ margin: "20px 0" }}>
+            {/* ✅ Ad Section */}
+            <div style={{ margin: '20px 0' }}>
               <ins
                 className="adsbygoogle"
-                style={{ display: "block" }}
+                style={{ display: 'block' }}
                 data-ad-client="ca-pub-5691028422781835"
                 data-ad-slot="1173025954"
                 data-ad-format="auto"
