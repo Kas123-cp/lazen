@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CartProvider';
 import { Toaster } from '@/components/ui/toaster';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Lapzen Team' }],
   creator: 'Lapzen',
-  metadataBase: new URL('https://lapzen.store'), // ✅ Updated
+  metadataBase: new URL('https://lapzen.store'),
   openGraph: {
     title: 'Lapzen – Premium Laptops in Pakistan',
     description:
@@ -67,7 +68,6 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_PK',
   },
-
   twitter: {
     card: 'summary_large_image',
     title: 'Lapzen – Premium Laptops in Pakistan',
@@ -77,33 +77,47 @@ export const metadata: Metadata = {
   },
 };
 
+function MonetagServiceWorkerRegister() {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js') // Ensure sw.js is in your public folder
+        .then((registration) => {
+          console.log('Monetag service worker registered:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Monetag service worker registration failed:', error);
+        });
+    }
+  }, []);
+
+  return null;
+}
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-
-
-        {/* ✅ Favicon & SEO Logo */}
+        {/* Favicon & SEO */}
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#ffffff" />
 
-
-        {/* ✅ Structured Data for Google Logo */}
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Lapzen",
-              url: "https://lapzen.store",
-              logo: "https://lapzen.store/logo.png",
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Lapzen',
+              url: 'https://lapzen.store',
+              logo: 'https://lapzen.store/favicon.ico',
             }),
           }}
         />
@@ -116,26 +130,9 @@ export default function RootLayout({
         )}
       >
         <CartProvider>
+          <MonetagServiceWorkerRegister />
           <div className="relative flex min-h-dvh flex-col bg-background">
             <Header />
-
-            {/* ✅ Ad Section */}
-            <div style={{ margin: '20px 0' }}>
-              <ins
-                className="adsbygoogle"
-                style={{ display: 'block' }}
-                data-ad-client="ca-pub-5691028422781835"
-                data-ad-slot="1173025954"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              ></ins>
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
-                }}
-              />
-            </div>
-
             <main className="flex-1 pt-20">{children}</main>
             <Footer />
           </div>
