@@ -34,7 +34,7 @@ export default function ProductJsonLd({
     },
     offers: {
       "@type": "Offer",
-      url: `https://lapzen.netlify.app/products/${id}`,
+      url: `https://lapzen.store/products/${id}`,
       priceCurrency: "PKR",
       price,
       itemCondition:
