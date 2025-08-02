@@ -95,9 +95,11 @@ export default function RootLayout({
         ></script>
 
         {/* ✅ Favicon & SEO Logo */}
-        <link rel="icon" href="/logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
-        <link rel="shortcut icon" href="/logo.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="theme-color" content="#ffffff" />
+
 
         {/* ✅ Structured Data for Google Logo */}
         <script
