@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CartProvider';
 import { Toaster } from '@/components/ui/toaster';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import MonetagServiceWorkerRegister from '@/components/MonetagServiceWorkerRegister';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -76,23 +76,6 @@ export const metadata: Metadata = {
     creator: '@yourTwitterHandle', // Replace or remove if not needed
   },
 };
-
-function MonetagServiceWorkerRegister() {
-  useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/sw.js') // Ensure sw.js is in your public folder
-        .then((registration) => {
-          console.log('Monetag service worker registered:', registration.scope);
-        })
-        .catch((error) => {
-          console.error('Monetag service worker registration failed:', error);
-        });
-    }
-  }, []);
-
-  return null;
-}
 
 export default function RootLayout({
   children,
