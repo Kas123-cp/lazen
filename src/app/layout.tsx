@@ -87,12 +87,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-        {/* ✅ AdSense Script */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5691028422781835"
-          crossOrigin="anonymous"
-        ></script>
+
 
         {/* ✅ Favicon & SEO Logo */}
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
