@@ -9,6 +9,7 @@ type ProductJsonLdProps = {
   price: number;
   brand: string;
   condition: 'New' | 'Used';
+  baseUrl?: string; // optional base URL
 };
 
 export default function ProductJsonLd({
@@ -19,6 +20,7 @@ export default function ProductJsonLd({
   price,
   brand,
   condition,
+  baseUrl = 'https://lapzen.store', // default to lapzen.store
 }: ProductJsonLdProps) {
   const schema = {
     "@context": "https://schema.org/",
@@ -34,7 +36,7 @@ export default function ProductJsonLd({
     },
     offers: {
       "@type": "Offer",
-      url: `https://lapzen.store/products/${id}`,
+      url: `${baseUrl}/products/${id}`,
       priceCurrency: "PKR",
       price,
       itemCondition:
